@@ -5,7 +5,7 @@ import urllib
 
 
 URL = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
-TRIGGER = "#factcheckbot"
+TRIGGER = "#checkiftrue"
 
 
 CONSUMER_KEY = environ['CONSUMER_KEY']
