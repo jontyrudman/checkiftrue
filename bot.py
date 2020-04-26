@@ -1,12 +1,24 @@
+from os import environ
 import tweepy
-from auth import get_twitter_auth
 import requests
-from auth import fact_check_key
 import urllib
 
 
 URL = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
 TRIGGER = "#factcheckbot"
+
+
+CONSUMER_KEY = environ['CONSUMER_KEY']
+CONSUMER_SECRET = environ['CONSUMER_SECRET']
+ACCESS_KEY = environ['ACCESS_KEY']
+ACCESS_SECRET = environ['ACCESS_SECRET']
+FACT_CHECK_KEY = environ['FACT_CHECK_KEY']
+
+
+def get_twitter_auth():
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+    return auth
 
 
 # override tweepy.StreamListener to add logic to on_status
@@ -58,7 +70,7 @@ def respond(reply, orig_tweet, follow_up=None):
 
 
 def check_claim(query):
-    response = requests.get(URL, params={'key': fact_check_key,
+    response = requests.get(URL, params={'key': FACT_CHECK_KEY,
                                          'query': query})
     try:
         claims = response.json()["claims"]
