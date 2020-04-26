@@ -1,14 +1,10 @@
-# fakenews
+# CheckIfTrue Twitter Bot
 
-Currently not working.
-Checks facts using a chrome extension or twitter bot for the user, to identify fake news.
-
-## Usage - Chrome Extension
-
-Select a phrase, right click on it and click "Fact Check" in the context menu.
-A pop-up will appear, telling the user whether it is likely that the statement is true or false.
+Only online for testing - will be online permanently once API keys for @CheckIfTrue are issued.
 
 ## Usage - Twitter Bot
 
-Tweet @\<bot-name\> with the following syntax: "\<claimant\>:\<claim\>" or "\<claim\>".
+Tweet @CheckIfTrue with the handle at the beginning or end of a plain tweet, containing a claim you'd like to determine the truthfulness of.
 The bot will retweet with a comment saying whether the statement is likely to be true or false.
+
+Currently, when online for testing, the handle is replaced with #factcheckbot and my account (@JontySR) replies.
