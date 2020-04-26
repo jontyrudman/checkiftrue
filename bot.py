@@ -38,7 +38,7 @@ class IncomingTweetStreamListener(tweepy.StreamListener):
 def process_tweet(tweet):
     print("Processing tweet from " + tweet.user.screen_name +
           " containing text:\n\"" + tweet.text + "\"")
-    text = re.sub(r'(?<= @)\w+', '', tweet.text)
+    text = re.sub(r'(?<=@)\w+', '', tweet.text)
     print("After removing handles: \"" + text + "\"")
     if text.startswith(TRIGGER) or text.endswith(TRIGGER):
         query = text.replace(TRIGGER, '')
