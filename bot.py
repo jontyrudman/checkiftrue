@@ -26,7 +26,8 @@ def get_twitter_auth():
 class IncomingTweetStreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
-        process_tweet(status)
+        if not hasattr(status, 'retweeted_status'):
+            process_tweet(status)
 
     def on_error(self, status_code):
         if status_code == 420:
@@ -37,7 +38,7 @@ class IncomingTweetStreamListener(tweepy.StreamListener):
 def process_tweet(tweet):
     print("Processing tweet from " + tweet.user.screen_name +
           " containing text:\n\"" + tweet.text + "\"")
-    text = re.sub(r'(?<= @)\w+', tweet.text)
+    text = re.sub(r'(?<= @)\w+', '', tweet.text)
     print("After removing handles: \"" + text + "\"")
     if text.startswith(TRIGGER) or text.endswith(TRIGGER):
         query = text.replace(TRIGGER, '')
