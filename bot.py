@@ -55,7 +55,7 @@ def process_tweet(tweet):
             return
         respond(reply, tweet, follow_up)
     else:
-        respond(INSTRUCTIONS)
+        respond(INSTRUCTIONS, tweet, None)
 
 
 def respond(reply, orig_tweet, follow_up=None):
