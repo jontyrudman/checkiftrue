@@ -7,6 +7,8 @@ import re
 
 URL = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
 TRIGGER = "@checkiftrue"
+INSTRUCTIONS = "If you'd like me to fact check a claim for you, @ me and use the text 'claim:', followed by your claim."
+FAIL = "No claims found on Google Fact Check."
 
 
 CONSUMER_KEY = environ['CONSUMER_KEY']
@@ -48,10 +50,12 @@ def process_tweet(tweet):
                         urllib.parse.quote(query) + ";hl=")
         reply = check_claim(query)
         if reply is None:
-            reply = "No claims found on Google Fact Check"
+            reply = FAIL
             respond(reply, tweet)
             return
         respond(reply, tweet, follow_up)
+    else:
+        respond(INSTRUCTIONS)
 
 
 def respond(reply, orig_tweet, follow_up=None):
