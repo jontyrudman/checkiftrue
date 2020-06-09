@@ -6,7 +6,7 @@ import re
 
 
 URL = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
-TRIGGER = "#checkiftrue"
+TRIGGER = "@checkiftrue"
 
 
 CONSUMER_KEY = environ['CONSUMER_KEY']
