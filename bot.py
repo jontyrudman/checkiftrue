@@ -40,8 +40,8 @@ def process_tweet(tweet):
           " containing text:\n\"" + tweet.text + "\"")
     text = re.sub(r'@\w+', '', tweet.text).strip()
     print("After removing handles: \"" + text + "\"")
-    if text.startswith(TRIGGER) or text.endswith(TRIGGER):
-        query = text.replace(TRIGGER, '')
+    if text.startswith("claim:"):
+        query = text.replace("claim:", '')
         follow_up = str("For more sources, head to " +
                         "https://toolbox.google.com/factcheck" +
                         "/explorer/search/" +
