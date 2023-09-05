@@ -1,3 +1,5 @@
+Update: **This no longer works because of the removal of Heroku free tier and changes to the Twitter API**
+
 # CheckIfTrue Twitter Bot
 
 Created for the EUvsVirus hackathon.
